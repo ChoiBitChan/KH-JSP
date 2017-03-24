@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/Exam10/sitemesh/decorator">
+	<decorator page="hello_decorator.jsp" name="main">
+		<pattern>/Exam10/sitemesh/hello.jsp</pattern>
+		<pattern>/Exam10/sitemesh/hello/*</pattern>
+	</decorator>
+	<decorator page="/Exam10/sitemesh/decorator2/news_decorator.jsp" name="news">
+		<pattern>/Exam10/sitemesh/news/*</pattern>
+	</decorator>
+	<excludes>
+		<pattern>/Exam10/sitemesh/hello/exclude.jsp</pattern>
+		<pattern>/Exam10/sitemesh/news/exclude.jsp</pattern>
+	</excludes>
+</decorators>

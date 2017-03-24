@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>JSP_study</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <filter>
+    <filter-name>sitemesh</filter-name>
+    <filter-class>
+		com.opensymphony.sitemesh.webapp.SiteMeshFilter
+	</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>sitemesh</filter-name>
+    <url-pattern>/Exam10/sitemesh/*</url-pattern>
+  </filter-mapping>
+  <context-param>
+    <param-name>javax.servlet.jsp.jstl.fmt.locale</param-name>
+    <param-value>ko_kr</param-value>
+  </context-param>
+  <context-param>
+    <param-name>javax.servlet.jsp.jstl.fmt.timeZone</param-name>
+    <param-value>Asia/Seoul</param-value>
+  </context-param>
+  <context-param>
+    <description>초기화파라미터</description>
+    <param-name>이름</param-name>
+    <param-value>값</param-value>
+  </context-param>
+  <context-param>
+    <param-name>checkLevel</param-name>
+    <param-value>5</param-value>
+  </context-param>
+  <servlet>
+    <servlet-name>DBCPInit</servlet-name>
+    <servlet-class>connectionPool.DB_connPool</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>nowServlet</servlet-name>
+    <servlet-class>day02.NowServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>tiles</servlet-name>
+    <servlet-class>org.apache.tiles.web.startup.TilesServlet</servlet-class>
+    <init-param>
+      <param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
+      <param-value>
+  			/WEB-INF/tiles-hello.xml,/WEB-INF/tiles-service.xml
+  		</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>TilesDispatchServlet</servlet-name>
+    <servlet-class>org.apache.tiles.web.util.TilesDispatchServlet</servlet-class>
+  </servlet>
+  
+  
+  
+  
+  
+  
+  <servlet>
+  	<servlet-name>SimpleController</servlet-name>
+  	<servlet-class>day0228_MVC.SimpleController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SimpleController</servlet-name>
+  	<url-pattern>/simple</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  
+  
+  <servlet>
+	<servlet-name>ControllerUsingFile</servlet-name>
+	<servlet-class>day0228_MVC.controller.ControllerUsingFile</servlet-class>
+	<init-param>
+		<param-name>configFile</param-name>
+		<param-value>/WEB-INF/commandHandler.properties</param-value>
+		<!-- 문자열을 param-value에 지정 -->
+	</init-param>
+  </servlet>
+  <servlet-mapping>
+	<servlet-name>ControllerUsingFile</servlet-name>
+	<url-pattern>/controllerUsingFile</url-pattern>
+  </servlet-mapping>
+  
+  
+   <!-- day0228_MVCboard  -->
+  
+  <servlet>
+  	<servlet-name>ControllerUsingURI</servlet-name>
+  	<servlet-class>day0228_MVCboard.controller.ControllerUsingURI</servlet-class>
+  	<init-param>
+  		<param-name>propertyConfig</param-name>
+  		<param-value>/WEB-INF/commandHandlerURI.properties</param-value>
+  	</init-param>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>ControllerUsingURI</servlet-name>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  <!-- day0228_MVC 
+  <servlet>
+  	<servlet-name>ControllerUsingURI</servlet-name>
+  	<servlet-class>day0228_MVC.controller.ControllerUsingURI</servlet-class>
+  	<init-param>
+  		<param-name>configFile2</param-name>
+  		<param-value>
+  			/WEB-INF/commandHandlerURI.properties
+  		</param-value>
+  	</init-param>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>ControllerUsingURI</servlet-name>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+   -->
+  
+  
+  
+  
+  
+  
+  
+  <servlet-mapping>
+    <servlet-name>TilesDispatchServlet</servlet-name>
+    <url-pattern>*.tiles</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>nowServlet</servlet-name>
+    <url-pattern>/now</url-pattern>
+  </servlet-mapping>
+</web-app>
